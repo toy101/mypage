@@ -7,7 +7,10 @@ export const client = createClient({
 
 export const getWorks = async () => {
   try {
-    const res = await client.get({ endpoint: "works" });
+    const res = await client.get({
+      endpoint: "works",
+      queries: { limit: 100 },
+    });
     return res.contents;
   } catch (error) {
     console.log("====getWorks error====");
