@@ -1,7 +1,6 @@
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { getWorks } from "../lib/api";
-import { log } from "console";
 
 export default async function WorksPage() {
   const works = await getWorks();
