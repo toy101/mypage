@@ -2,8 +2,8 @@ import Link from "next/link";
 import Particles from "./components/particles";
 
 const navigation = [
-  { name: "Portfolio", href: "portfolio" },
-  { name: "Contact", href: "contact" },
+  { name: "Portfolio / ポートフォリオ", href: "portfolio" },
+  { name: "Contact / お問い合わせ", href: "contact" },
 ];
 
 export default function Home() {

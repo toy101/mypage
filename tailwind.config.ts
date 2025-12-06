@@ -103,6 +103,7 @@ module.exports = {
             opacity: "100%",
           },
         },
+<<<<<<< HEAD
         fadeUp: {
           "0%": {
             opacity: "0",
@@ -113,6 +114,8 @@ module.exports = {
             transform: "translateY(0)",
           },
         },
+=======
+>>>>>>> main
       },
     },
   },

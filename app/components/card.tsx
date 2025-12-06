@@ -8,6 +8,7 @@ type CardProps = {
 
 export const Card: React.FC<CardProps> = ({ title, tag, imageUrl }) => {
   return (
+<<<<<<< HEAD
     <div className="overflow-hidden relative duration-700 rounded-xl hover:bg-zinc-800/10 group md:gap-8 hover:border-zinc-400/50 border-zinc-600 hover:scale-105 fade-in-bottom">
       <article className="relative transform transition duration-500 ">
         <div className="px-2 flex justify-center">
