@@ -2,11 +2,20 @@
 
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
 export const Navigation: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
+
+  const pathName = usePathname();
+
+  const pathSegments = pathName.replace(/\/$/, "").split("/");
+  pathSegments.pop();
+
+  const parentPath =
+    pathSegments.length > 0 ? pathSegments.join("/") || "/" : "/";
 
   useEffect(() => {
     if (!ref.current) return;
@@ -28,9 +37,22 @@ export const Navigation: React.FC = () => {
         }`}
       >
         <div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-          <div className="flex justify-between gap-8"></div>
+          <div className="flex justify-between gap-8">
+            <Link
+              href="/portfolio"
+              className="duration-200 text-zinc-400 hover:text-zinc-100"
+            >
+              portfolio
+            </Link>
+            <Link
+              href="/portfolio"
+              className="duration-200 text-zinc-400 hover:text-zinc-100"
+            >
+              about me
+            </Link>
+          </div>
           <Link
-            href="/"
+            href={parentPath}
             className="duration-200 text-zinc-300 hover:text-zinc-100"
           >
             <ArrowLeft className="w-6 h-6" />

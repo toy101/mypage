@@ -1,6 +1,7 @@
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { getWorks } from "../lib/api";
+import Link from "next/link";
 
 export default async function WorksPage() {
   const works = await getWorks();
@@ -19,7 +20,12 @@ export default async function WorksPage() {
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 md:p-2 xl:p-5">
           {works.map(
             (
-              work: { youtube_id: string; title: string; tag: string },
+              work: {
+                id: string;
+                youtube_id: string;
+                title: string;
+                tag: string;
+              },
               index: number
             ) => (
               <div
@@ -29,12 +35,14 @@ export default async function WorksPage() {
                   animationDelay: `${index * 0.2}s`, // アイテムごとに遅延を設定
                 }}
               >
-                <Card
-                  key={work.youtube_id}
-                  title={work.title}
-                  tag={work.tag}
-                  imageUrl={`https://img.youtube.com/vi/${work.youtube_id}/maxresdefault.jpg`}
-                />
+                <Link href="/portfolio/work">
+                  <Card
+                    key={work.youtube_id}
+                    title={work.title}
+                    tag={work.tag}
+                    imageUrl={`https://img.youtube.com/vi/${work.youtube_id}/maxresdefault.jpg`}
+                  />
+                </Link>
               </div>
             )
           )}

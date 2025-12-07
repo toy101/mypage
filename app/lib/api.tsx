@@ -17,3 +17,17 @@ export const getWorks = async () => {
     console.log(error);
   }
 };
+
+export const getWorkbyId = async (id: string) => {
+  try {
+    const res = await client.getListDetail({
+      endpoint: "works",
+      contentId: id,
+    });
+
+    return res;
+  } catch (error) {
+    console.log("====getWork error====");
+    console.log(error);
+  }
+};
