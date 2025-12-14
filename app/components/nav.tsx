@@ -45,7 +45,7 @@ export const Navigation: React.FC = () => {
               portfolio
             </Link>
             <Link
-              href="/portfolio"
+              href="/about_me"
               className="duration-200 text-zinc-400 hover:text-zinc-100"
             >
               about me
