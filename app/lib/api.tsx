@@ -9,7 +9,7 @@ export const getWorks = async () => {
   try {
     const res = await client.get({
       endpoint: "works",
-      queries: { limit: 100 },
+      queries: { limit: 100, orders: "-priority" },
     });
     return res.contents;
   } catch (error) {

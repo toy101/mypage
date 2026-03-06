@@ -14,15 +14,37 @@
   }
 }
 
+html,
 body {
+  min-height: 100%;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overscroll-behavior-y: none;
+  scrollbar-gutter: auto;
+}
+
+body.no-vertical-scrollbar .site-header {
+  padding-right: var(--scrollbar-width, 0px);
 }
 
 @layer base {
+  @supports not (scrollbar-gutter: stable) {
+    html,
+    body {
+      overflow-y: auto;
+    }
+  }
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  }
+
+  .text-fill-transparent {
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-clip-text-webkit {
+    -webkit-background-clip: text;
   }
 
   /* スクロールバーのスタイル */

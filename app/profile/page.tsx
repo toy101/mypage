@@ -73,7 +73,7 @@ const guidelines = [
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black text-zinc-100">
+    <div className="min-h-[100dvh] bg-gradient-to-b from-black via-slate-900 to-black text-zinc-100">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.18),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(16,185,129,0.18),transparent_35%)]" />
       <Navigation />
       <main className="relative mx-auto flex max-w-6xl flex-col gap-10 px-6 pb-20 pt-16 md:px-10 lg:flex-row lg:pt-24">
@@ -82,7 +82,7 @@ export default function ProfilePage() {
             <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">
               Profile
             </p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
               登生 / トーイ / To-y
             </h1>
             <div className="inline-flex flex-wrap gap-3">
@@ -93,7 +93,7 @@ export default function ProfilePage() {
           </header>
 
           <section className="lg:grid-cols-[1.3fr_1fr]">
-            <div className="rounded-3xl border border-zinc-800/80 bg-zinc-900/60 p-6 shadow-xl shadow-indigo-900/20">
+            <div className="rounded-3xl border border-white/10 bg-zinc-950/35 backdrop-blur-md p-6 shadow-2xl shadow-indigo-900/25 transition hover:border-white/20">
               <div className="flex items-center gap-3">
                 <span className="text-sm uppercase tracking-[0.2em] text-emerald-300">
                   Links
@@ -105,7 +105,7 @@ export default function ProfilePage() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="rounded-full border border-zinc-700/80 bg-zinc-800/70 px-4 py-2 text-sm text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-300/70 hover:text-emerald-100"
+                    className="rounded-full border border-zinc-700/80 bg-zinc-800/70 px-4 py-2 text-sm text-zinc-100 transition hover:border-emerald-300/70 hover:text-emerald-100"
                   >
                     {link.label}
                   </Link>
@@ -115,7 +115,7 @@ export default function ProfilePage() {
           </section>
 
           <section className="lg:grid-cols-[1.3fr_1fr]">
-            <div className="rounded-3xl border border-zinc-800/80 bg-zinc-900/60 p-6 shadow-xl shadow-indigo-900/20">
+            <div className="rounded-3xl border border-white/10 bg-zinc-950/35 backdrop-blur-md p-6 shadow-2xl shadow-indigo-900/25 transition hover:border-white/20">
               <div className="flex items-center gap-3">
                 <span className="text-sm uppercase tracking-[0.2em] text-indigo-300">
                   Contact
@@ -128,13 +128,13 @@ export default function ProfilePage() {
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <Link
                   href="mailto:toy101takuma@gmail.com"
-                  className="rounded-full border border-zinc-700/80 bg-zinc-800/70 px-4 py-2 text-indigo-100 transition hover:-translate-y-0.5 hover:border-indigo-300/80 hover:text-white"
+                  className="rounded-full border border-zinc-700/80 bg-zinc-800/70 px-4 py-2 text-indigo-100 transition hover:border-indigo-300/80 hover:text-white"
                 >
                   toy101@gmail.com
                 </Link>
                 <Link
                   href="https://x.com/Toy530"
-                  className="rounded-full border border-zinc-700/80 bg-zinc-800/70 px-4 py-2 text-indigo-100 transition hover:-translate-y-0.5 hover:border-indigo-300/80 hover:text-white"
+                  className="rounded-full border border-zinc-700/80 bg-zinc-800/70 px-4 py-2 text-indigo-100 transition hover:border-indigo-300/80 hover:text-white"
                 >
                   DM on X
                 </Link>
@@ -143,7 +143,7 @@ export default function ProfilePage() {
           </section>
 
           <section className="gap-6 lg:grid-cols-[1.2fr_1fr]">
-            <div className="rounded-3xl border border-zinc-800/80 bg-zinc-900/70 p-6 shadow-xl shadow-indigo-900/25">
+            <div className="rounded-3xl border border-white/10 bg-zinc-950/35 backdrop-blur-md p-6 shadow-2xl shadow-indigo-900/25 transition hover:border-white/20">
               <div className="flex items-center gap-3">
                 <span className="text-sm uppercase tracking-[0.2em] text-pink-300">
                   Comments
@@ -160,7 +160,7 @@ export default function ProfilePage() {
             </div>
           </section>
 
-          <section className="space-y-4 rounded-3xl border border-zinc-800/80 bg-zinc-900/70 p-6 shadow-xl shadow-indigo-900/30">
+          <section className="space-y-4 rounded-3xl border border-white/10 bg-zinc-950/35 backdrop-blur-md p-6 shadow-2xl shadow-indigo-900/25 transition hover:border-white/20">
             <div className="flex items-center gap-3">
               <span className="text-sm uppercase tracking-[0.2em] text-emerald-300">
                 主な実績
@@ -171,9 +171,9 @@ export default function ProfilePage() {
               {achievements.map((group) => (
                 <div
                   key={group.title}
-                  className="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-5"
+                  className="rounded-2xl border border-white/10 bg-zinc-950/35 backdrop-blur-md p-5 shadow-xl shadow-indigo-900/25 transition hover:border-white/20"
                 >
-                  <h3 className="text-lg font-semibold text-zinc-100">
+                  <h3 className="font-display text-lg font-semibold text-zinc-100">
                     {group.title}
                   </h3>
                   <ul className="mt-3 space-y-3 text-sm text-zinc-200">
@@ -193,28 +193,31 @@ export default function ProfilePage() {
             </div>
           </section>
 
-          <section className="rounded-3xl border border-zinc-800/80 bg-gradient-to-br from-zinc-950 via-zinc-900 to-slate-950 p-6 shadow-2xl shadow-indigo-900/40">
-            <div className="flex items-center gap-3">
-              <span className="text-sm uppercase tracking-[0.2em] text-cyan-300">
-                ガイドライン
-              </span>
-              <div className="h-px flex-1 bg-gradient-to-r from-cyan-300/60 via-emerald-300/30 to-transparent" />
+          <section className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 to-slate-950 p-6 shadow-2xl shadow-indigo-900/40 transition">
+            <div className="absolute inset-0 rounded-3xl border border-white/10 bg-zinc-950/25 backdrop-blur-md transition group-hover:border-white/20" />
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <span className="text-sm uppercase tracking-[0.2em] text-cyan-300">
+                  ガイドライン
+                </span>
+                <div className="h-px flex-1 bg-gradient-to-r from-cyan-300/60 via-emerald-300/30 to-transparent" />
+              </div>
+              <p className="mt-3 text-zinc-200">映像の利用について</p>
+              <ul className="mt-3 space-y-2 text-sm text-zinc-300">
+                {guidelines.map((rule) => (
+                  <li key={rule} className="leading-relaxed">
+                    {rule}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm text-indigo-200">
+                再利用や二次展開の相談は必ず事前に。リスクを潰してから走る。
+              </p>
             </div>
-            <p className="mt-3 text-zinc-200">映像の利用について</p>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              {guidelines.map((rule) => (
-                <li key={rule} className="leading-relaxed">
-                  {rule}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-sm text-indigo-200">
-              再利用や二次展開の相談は必ず事前に。リスクを潰してから走る。
-            </p>
           </section>
         </div>
 
-        <aside className="relative flex-[1] lg:mt-24">
+        <aside className="relative hidden flex-[1] overflow-x-hidden lg:mt-24 lg:block">
           <div className="sticky top-24">
             <div className="absolute inset-0 -z-10 rounded-[32px] bg-gradient-to-b from-indigo-500/15 via-emerald-400/10 to-transparent blur-3xl" />
             <div className="absolute -right-10 top-12 h-32 w-32 rounded-full bg-indigo-500/25 blur-3xl" />
@@ -226,15 +229,8 @@ export default function ProfilePage() {
                 alt="toy101 avatar"
                 fill
                 sizes="(max-width: 640px) 90vw, (max-width: 1024px) 42vw, 38vw"
-                className="object-contain p-6 drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] transition-opacity duration-75 group-hover:opacity-0"
+                className="pointer-events-none select-none object-contain p-6 drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] opacity-100"
                 priority
-              />
-              <Image
-                src="/avatar_1.webp"
-                alt="toy101 avatar alternate"
-                fill
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 42vw, 38vw"
-                className="object-contain p-6 drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] opacity-0 transition-opacity duration-75 group-hover:opacity-100"
               />
             </div>
           </div>

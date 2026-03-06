@@ -11,6 +11,20 @@ interface ParticlesProps {
   refresh?: boolean;
 }
 
+type Circle = {
+  x: number;
+  y: number;
+  translateX: number;
+  translateY: number;
+  size: number;
+  alpha: number;
+  targetAlpha: number;
+  dx: number;
+  dy: number;
+  magnetism: number;
+  hue: number;
+};
+
 export default function Particles({
   className = "",
   quantity = 300,
@@ -21,7 +35,7 @@ export default function Particles({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const context = useRef<CanvasRenderingContext2D | null>(null);
-  const circles = useRef<any[]>([]);
+  const circles = useRef<Circle[]>([]);
   const mousePosition = useMousePosition();
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
@@ -67,19 +81,6 @@ export default function Particles({
     }
   };
 
-  type Circle = {
-    x: number;
-    y: number;
-    translateX: number;
-    translateY: number;
-    size: number;
-    alpha: number;
-    targetAlpha: number;
-    dx: number;
-    dy: number;
-    magnetism: number;
-  };
-
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
       circles.current.length = 0;
@@ -100,10 +101,11 @@ export default function Particles({
     const translateY = 0;
     const size = Math.floor(Math.random() * 2) + 0.5;
     const alpha = 0;
-    const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+    const targetAlpha = parseFloat((Math.random() * 0.35 + 0.55).toFixed(2));
     const dx = (Math.random() - 0.5) * 0.2;
     const dy = (Math.random() - 0.5) * 0.2;
     const magnetism = 0.1 + Math.random() * 4;
+    const hue = Math.floor(Math.random() * 80) + 200;
     return {
       x,
       y,
@@ -115,17 +117,24 @@ export default function Particles({
       dx,
       dy,
       magnetism,
+      hue,
     };
   };
 
   const drawCircle = (circle: Circle, update = false) => {
     if (context.current) {
-      const { x, y, translateX, translateY, size, alpha } = circle;
+      const { x, y, translateX, translateY, size, alpha, hue } = circle;
       context.current.translate(translateX, translateY);
       context.current.beginPath();
       context.current.arc(x, y, size, 0, 2 * Math.PI);
-      context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      context.current.shadowBlur = 20;
+      context.current.shadowColor = `hsla(${hue}, 100%, 70%, ${Math.min(
+        alpha + 0.5,
+        1,
+      )})`;
+      context.current.fillStyle = `hsla(${hue}, 100%, 75%, ${alpha})`;
       context.current.fill();
+      context.current.shadowBlur = 0;
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       if (!update) {
@@ -140,7 +149,7 @@ export default function Particles({
         0,
         0,
         canvasSize.current.w,
-        canvasSize.current.h
+        canvasSize.current.h,
       );
     }
   };
@@ -159,7 +168,7 @@ export default function Particles({
     start1: number,
     end1: number,
     start2: number,
-    end2: number
+    end2: number,
   ): number => {
     const remapped =
       ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
@@ -178,7 +187,7 @@ export default function Particles({
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
       const remapClosestEdge = parseFloat(
-        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
+        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
       );
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;
@@ -219,7 +228,7 @@ export default function Particles({
             translateY: circle.translateY,
             alpha: circle.alpha,
           },
-          true
+          true,
         );
       }
     });

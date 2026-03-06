@@ -29,9 +29,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-        // display: ["var(--font-calsans)"],
-        display: ["var(--font-zenkaku-gothic)"],
+        sans: ["\"LINE Seed JP\"", ...defaultTheme.fontFamily.sans],
+        display: ["\"LINE Seed JP\"", ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         "gradient-radial":
